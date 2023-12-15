@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\İKBAL\\Source\\Repos\\udemyWeb1\\udemyWeb1.csproj": {}
+    "C:\\Users\\İKBAL\\OneDrive\\Masaüstü\\PlanetHospital\\udemyWeb1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\İKBAL\\Source\\Repos\\udemyWeb1\\udemyWeb1.csproj": {
+    "C:\\Users\\İKBAL\\OneDrive\\Masaüstü\\PlanetHospital\\udemyWeb1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\İKBAL\\Source\\Repos\\udemyWeb1\\udemyWeb1.csproj",
+        "projectUniqueName": "C:\\Users\\İKBAL\\OneDrive\\Masaüstü\\PlanetHospital\\udemyWeb1.csproj",
         "projectName": "udemyWeb1",
-        "projectPath": "C:\\Users\\İKBAL\\Source\\Repos\\udemyWeb1\\udemyWeb1.csproj",
+        "projectPath": "C:\\Users\\İKBAL\\OneDrive\\Masaüstü\\PlanetHospital\\udemyWeb1.csproj",
         "packagesPath": "C:\\Users\\İKBAL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\İKBAL\\Source\\Repos\\udemyWeb1\\obj\\",
+        "outputPath": "C:\\Users\\İKBAL\\OneDrive\\Masaüstü\\PlanetHospital\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\İKBAL\\AppData\\Roaming\\NuGet\\NuGet.Config",

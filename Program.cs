@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using udemyWeb1.Haberlesme;
+using udemyWeb1.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,11 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<UygulamaDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//_poliklinikTuruRepository nesnesi olusturmasýný Dependency Injection servisi sayesinde olusturulur
+builder.Services.AddScoped<IPoliklinikTuruRepository, PoliklinikTuruRepository>();
+
+builder.Services.AddScoped<IDoktorRepository, DoktorRepository>();
 
 var app = builder.Build();
 

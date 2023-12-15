@@ -6,15 +6,15 @@ namespace udemyWeb1.Controllers
 {
     public class PoliklinikTuruController : Controller
     {
-        private readonly UygulamaDbContext _uygulamaDbContext;
+        private readonly IPoliklinikTuruRepository _poliklinikTuruRepository;
 
-        public PoliklinikTuruController(UygulamaDbContext context)
+        public PoliklinikTuruController(IPoliklinikTuruRepository context)
         {
-            _uygulamaDbContext = context;
+            _poliklinikTuruRepository = context;
         }
         public IActionResult Index()
         {
-            List<PoliklinikTuru> objPoliklinikTuru = _uygulamaDbContext.PoliklinikTurleri.ToList();
+            List<PoliklinikTuru> objPoliklinikTuru = _poliklinikTuruRepository.GetAll().ToList();
             return View(objPoliklinikTuru);
         }
         public IActionResult Ekle() 
@@ -25,11 +25,11 @@ namespace udemyWeb1.Controllers
         [HttpPost]
         public IActionResult Ekle(PoliklinikTuru poliklinikTuru)
         {
-            if(ModelState.IsValid) { 
-            _uygulamaDbContext.PoliklinikTurleri.Add(poliklinikTuru);
-            _uygulamaDbContext.SaveChanges();
-            TempData["basarili"] = "Yeni Poliklinik Türü başarıyla oluşturuldu";
-            return RedirectToAction("Index","PoliklinikTuru");
+            if(ModelState.IsValid) {
+                _poliklinikTuruRepository.Ekle(poliklinikTuru);
+                _poliklinikTuruRepository.Kaydet();
+                TempData["basarili"] = "Yeni Poliklinik Türü başarıyla oluşturuldu";
+                return RedirectToAction("Index","PoliklinikTuru");
             }
             return View();
         }
@@ -40,7 +40,7 @@ namespace udemyWeb1.Controllers
             {
                 return NotFound();
             }
-            PoliklinikTuru? poliklinikTuruVT = _uygulamaDbContext.PoliklinikTurleri.Find(id);
+            PoliklinikTuru? poliklinikTuruVT = _poliklinikTuruRepository.Get(u=>u.Id==id);  //Expression<Func<T, bool>> filtre
             if(poliklinikTuruVT == null) 
             { 
                 return NotFound(); 
@@ -53,8 +53,8 @@ namespace udemyWeb1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _uygulamaDbContext.PoliklinikTurleri.Update(poliklinikTuru);
-                _uygulamaDbContext.SaveChanges();
+                _poliklinikTuruRepository.Guncelle(poliklinikTuru);
+                _poliklinikTuruRepository.Kaydet();
                 TempData["basarili"] = "Poliklinik Türü başarıyla güncellendi";
                 return RedirectToAction("Index", "PoliklinikTuru");
             }
@@ -67,7 +67,7 @@ namespace udemyWeb1.Controllers
             {
                 return NotFound();
             }
-            PoliklinikTuru? poliklinikTuruVT = _uygulamaDbContext.PoliklinikTurleri.Find(id);
+            PoliklinikTuru? poliklinikTuruVT = _poliklinikTuruRepository.Get(u => u.Id == id);
             if (poliklinikTuruVT == null)
             {
                 return NotFound();
@@ -78,13 +78,13 @@ namespace udemyWeb1.Controllers
         [HttpPost,ActionName("Sil")]
         public IActionResult SilPOST(int? id)
         {
-            PoliklinikTuru? poliklinikTuru = _uygulamaDbContext.PoliklinikTurleri.Find(id);
-            if(poliklinikTuru == null)
+            PoliklinikTuru? poliklinikTuru = _poliklinikTuruRepository.Get(u => u.Id == id);
+            if (poliklinikTuru == null)
             {
                 return NotFound();
             }
-            _uygulamaDbContext.PoliklinikTurleri.Remove(poliklinikTuru);
-            _uygulamaDbContext.SaveChanges();
+            _poliklinikTuruRepository.Sil(poliklinikTuru);
+            _poliklinikTuruRepository.Kaydet();
             TempData["basarili"] = "Poliklinik Türü başarıyla silindi";
             return RedirectToAction("index", "PoliklinikTuru");
         }

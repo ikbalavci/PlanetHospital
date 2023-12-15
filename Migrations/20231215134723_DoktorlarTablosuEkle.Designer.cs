@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using udemyWeb1.Haberlesme;
 
@@ -10,9 +11,11 @@ using udemyWeb1.Haberlesme;
 namespace udemyWeb1.Migrations
 {
     [DbContext(typeof(UygulamaDbContext))]
-    partial class UygulamaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231215134723_DoktorlarTablosuEkle")]
+    partial class DoktorlarTablosuEkle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,20 +43,11 @@ namespace udemyWeb1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PoliklinikTuruId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ResimUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Unvan")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PoliklinikTuruId");
 
                     b.ToTable("Doktorlar");
                 });
@@ -74,17 +68,6 @@ namespace udemyWeb1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PoliklinikTurleri");
-                });
-
-            modelBuilder.Entity("udemyWeb1.Models.Doktor", b =>
-                {
-                    b.HasOne("udemyWeb1.Models.PoliklinikTuru", "PoliklinikTuru")
-                        .WithMany()
-                        .HasForeignKey("PoliklinikTuruId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PoliklinikTuru");
                 });
 #pragma warning restore 612, 618
         }

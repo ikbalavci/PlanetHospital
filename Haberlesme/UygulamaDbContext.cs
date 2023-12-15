@@ -8,5 +8,8 @@ namespace udemyWeb1.Haberlesme
         public UygulamaDbContext(DbContextOptions<UygulamaDbContext> options) : base(options) { }
 
         public DbSet<PoliklinikTuru> PoliklinikTurleri { get; set; }
+        
+        public DbSet<Doktor> Doktorlar {  get; set; }
+
     }
 }
