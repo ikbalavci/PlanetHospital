@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pronRRH2Mjw5dabYtygXEnE4jTvPU7VWOhts6czHy4U=",
+  "Hash": "Vf7uZgPcVUt7L62dXD3a+FjLRX9PJkHb/ZFixso31lI=",
   "Source": "udemyWeb1",
   "BasePath": "_content/udemyWeb1",
   "Mode": "Default",
@@ -83,6 +83,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\İKBAL\\OneDrive\\Masaüstü\\PlanetHospital\\wwwroot\\img\\2.jpg",
+      "SourceId": "udemyWeb1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\İKBAL\\OneDrive\\Masaüstü\\PlanetHospital\\wwwroot\\",
+      "BasePath": "_content/udemyWeb1",
+      "RelativePath": "img/2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\İKBAL\\OneDrive\\Masaüstü\\PlanetHospital\\wwwroot\\img\\rick.jpg",
+      "SourceId": "udemyWeb1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\İKBAL\\OneDrive\\Masaüstü\\PlanetHospital\\wwwroot\\",
+      "BasePath": "_content/udemyWeb1",
+      "RelativePath": "img/rick.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\rick.jpg"
     },
     {
       "Identity": "C:\\Users\\İKBAL\\OneDrive\\Masaüstü\\PlanetHospital\\wwwroot\\js\\site.js",

@@ -10,41 +10,87 @@ namespace udemyWeb1.Controllers
     {
         private readonly IDoktorRepository _doktorRepository;
         private readonly IPoliklinikTuruRepository _poliklinikTuruRepository;
+        public readonly IWebHostEnvironment _webHostEnvironment;
 
-        public DoktorController(IDoktorRepository doktorRepository, IPoliklinikTuruRepository poliklinikTuruRepository)
+        public DoktorController(IDoktorRepository doktorRepository, IPoliklinikTuruRepository poliklinikTuruRepository, IWebHostEnvironment webHostEnvironment)
         {
             _doktorRepository = doktorRepository;
             _poliklinikTuruRepository = poliklinikTuruRepository;
+            _webHostEnvironment = webHostEnvironment;
+
         }
         public IActionResult Index()
         {
-            List<Doktor> objDoktor = _doktorRepository.GetAll().ToList();
-            IEnumerable<SelectListItem> PoliklinikTuruList = _poliklinikTuruRepository.GetAll()
-                .Select(k => new SelectListItem
-                {
-                    Text= k.Ad,
-                    Value=k.Id.ToString()
-                });
+            //List<Doktor> objDoktor = _doktorRepository.GetAll().ToList();
+            List<Doktor> objDoktor = _doktorRepository.GetAll(includeProps:"PoliklinikTuru").ToList();
 
             return View(objDoktor);
         }
-        public IActionResult Ekle() 
+        public IActionResult EkleGuncelle(int? id) 
         {
-            return View();
+            IEnumerable<SelectListItem> PoliklinikTuruList = _poliklinikTuruRepository.GetAll()
+                .Select(k => new SelectListItem
+                {
+                    Text = k.Ad,
+                    Value = k.Id.ToString()
+                });
+            ViewBag.PoliklinikTuruList = PoliklinikTuruList;
+
+            if(id == null || id == 0)
+            {
+                //Ekleme
+                return View();
+            }
+            else
+            {
+                //Güncelleme
+                Doktor? doktorVT = _doktorRepository.Get(u => u.Id == id);  //Expression<Func<T, bool>> filtre
+                if (doktorVT == null)
+                {
+                    return NotFound();
+                }
+                return View(doktorVT);
+            }
+            
         }
 
         [HttpPost]
-        public IActionResult Ekle(Doktor doktor)
+        public IActionResult EkleGuncelle(Doktor doktor,IFormFile? file)
         {
             if(ModelState.IsValid) {
-                _doktorRepository.Ekle(doktor);
+
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                string doktorPath=Path.Combine(wwwRootPath,@"img");
+
+
+                if (file != null)
+                {
+                    using (var fileStream = new FileStream(Path.Combine(doktorPath, file.FileName), FileMode.Create))
+                    {
+                        file.CopyTo(fileStream);
+                    }
+                    doktor.ResimUrl = @"\img\" + file.FileName;
+                }
+
+                if(doktor.Id == 0) 
+                {
+                    _doktorRepository.Ekle(doktor);
+                    TempData["basarili"] = "Yeni Doktor başarıyla oluşturuldu";
+                }
+                else
+                {
+                    _doktorRepository.Guncelle(doktor);
+                    TempData["basarili"] = "Doktor güncelleme başarılı ";
+                }
+
+                
                 _doktorRepository.Kaydet();
-                TempData["basarili"] = "Yeni Doktor başarıyla oluşturuldu";
+                
                 return RedirectToAction("Index","Doktor");
             }
             return View();
         }
-
+        /*
         public IActionResult Guncelle(int? id)
         {
             if(id== null || id==0)
@@ -58,6 +104,8 @@ namespace udemyWeb1.Controllers
             }
             return View(doktorVT);
         }
+        */
+        /*
 
         [HttpPost]
         public IActionResult Guncelle(Doktor doktor)
@@ -71,6 +119,7 @@ namespace udemyWeb1.Controllers
             }
             return View();
         }
+        */
 
         public IActionResult Sil(int? id)
         {

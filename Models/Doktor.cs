@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace udemyWeb1.Models
@@ -22,11 +23,14 @@ namespace udemyWeb1.Models
         [Range(1900, 2005)]
         public int DogumYili {  get; set; }
 
+        [ValidateNever]
         public int PoliklinikTuruId { get; set; }
         [ForeignKey("PoliklinikTuruId")]
 
+        [ValidateNever]
         public PoliklinikTuru PoliklinikTuru { get; set; }
 
+        [ValidateNever]
         public string ResimUrl { get; set; }
 
     }

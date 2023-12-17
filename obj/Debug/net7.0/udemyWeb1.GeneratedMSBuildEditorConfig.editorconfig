@@ -16,6 +16,18 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\İKBAL\OneDrive\Masaüstü\PlanetHospital
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/İKBAL/OneDrive/Masaüstü/PlanetHospital/Views/Doktor/EkleGuncelle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9rdG9yXEVrbGVHdW5jZWxsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/İKBAL/OneDrive/Masaüstü/PlanetHospital/Views/Doktor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9rdG9yXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/İKBAL/OneDrive/Masaüstü/PlanetHospital/Views/Doktor/Sil.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9rdG9yXFNpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/İKBAL/OneDrive/Masaüstü/PlanetHospital/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

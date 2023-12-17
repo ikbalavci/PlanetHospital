@@ -42,9 +42,9 @@
                 <td>@doktor.Bolum</td>
                 <td>@doktor.Unvan</td>
                 <td>@doktor.DogumYili</td>
-                <td> </td>
+                <td>@doktor.PoliklinikTuru.Ad </td>
                 <td>
-                    <a asp-controller="Doktor" asp-action="Guncelle" asp-route-id="@doktor.Id" type="button" class="btn btn-success" style="width:150px">Güncelle</a>
+                    <a asp-controller="Doktor" asp-action="EkleGuncelle" asp-route-id="@doktor.Id" type="button" class="btn btn-success" style="width:150px">Güncelle</a>
                 </td>
                 <td>
                     <a asp-controller="Doktor" asp-action="Sil" asp-route-id="@doktor.Id" type="button" class="btn btn-danger" style="width:150px">Sil</a>
@@ -56,6 +56,6 @@
 <div class="row pt-3 pb3">
     <div>
         
-        <a asp-controller="Doktor" asp-action="Ekle" class="btn btn-primary" type="button">Oluştur</a>
+        <a asp-controller="Doktor" asp-action="EkleGuncelle" class="btn btn-primary" type="button">Oluştur</a>
     </div>
 </div>

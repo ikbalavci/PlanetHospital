@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\İKBAL\\OneDrive\\Masaüstü\\PlanetHospital\\wwwroot\\img\\2.jpg",
+      "PackagePath": "staticwebassets\\img\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\İKBAL\\OneDrive\\Masaüstü\\PlanetHospital\\wwwroot\\img\\rick.jpg",
+      "PackagePath": "staticwebassets\\img\\rick.jpg"
+    },
+    {
       "Id": "C:\\Users\\İKBAL\\OneDrive\\Masaüstü\\PlanetHospital\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
