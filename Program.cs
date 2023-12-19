@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using udemyWeb1.Haberlesme;
 using udemyWeb1.Models;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +11,15 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<UygulamaDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//_poliklinikTuruRepository nesnesi olusturmasýný Dependency Injection servisi sayesinde olusturulur
-builder.Services.AddScoped<IPoliklinikTuruRepository, PoliklinikTuruRepository>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<UygulamaDbContext>();
+builder.Services.AddRazorPages();
 
+
+//Yeni repository sï¿½nï¿½f oluï¿½turduï¿½umuzda mutlaka burada serviceslere eklemeliyiz (dependency injection)
+//_poliklinikTuruRepository nesnesi olusturmasï¿½nï¿½ Dependency Injection servisi sayesinde olusturulur
+builder.Services.AddScoped<IPoliklinikTuruRepository, PoliklinikTuruRepository>();
 builder.Services.AddScoped<IDoktorRepository, DoktorRepository>();
+builder.Services.AddScoped<IRandevuRepository, RandevuRepository>();
 
 var app = builder.Build();
 
@@ -31,6 +37,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",
