@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using udemyWeb1.Haberlesme;
 using udemyWeb1.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<UygulamaDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<UygulamaDbContext>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                                        .AddEntityFrameworkStores<UygulamaDbContext>().AddDefaultTokenProviders();
 builder.Services.AddRazorPages();
 
 
@@ -20,6 +22,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddScoped<IPoliklinikTuruRepository, PoliklinikTuruRepository>();
 builder.Services.AddScoped<IDoktorRepository, DoktorRepository>();
 builder.Services.AddScoped<IRandevuRepository, RandevuRepository>();
+builder.Services.AddScoped<IEmailSender,EmailSender>();
 
 var app = builder.Build();
 

@@ -27,6 +27,29 @@
                 <label asp-for="Input.ConfirmPassword">Confirm Password</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            <!--
+            <div class="form-floating mb-3">
+                <input asp-for="Input.HastaTcno" class="form-control" aria-required="true" placeholder="TcNumaraniz" />
+                <label asp-for="Input.HastaTcno">HastaTcno</label>
+                <span asp-validation-for="Input.HastaTcno" class="text-danger"></span>
+            </div> 
+            -->
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Adres" class="form-control" placeholder="IlIlceMahalleSokak" />
+                <label asp-for="Input.Adres">Adres</label>
+                <span asp-validation-for="Input.Adres" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Cinsiyet" class="form-control" placeholder="Kadin/Erkek" />
+                <label asp-for="Input.Cinsiyet">Cinsiyet</label>
+                <span asp-validation-for="Input.Cinsiyet" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Yas" class="form-control" placeholder="Yasiniz" />
+                <label asp-for="Input.Yas">Yas</label>
+                <span asp-validation-for="Input.Yas" class="text-danger"></span>
+            </div>
+
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
     </div>
